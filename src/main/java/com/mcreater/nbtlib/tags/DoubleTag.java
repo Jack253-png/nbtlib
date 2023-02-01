@@ -2,31 +2,31 @@ package com.mcreater.nbtlib.tags;
 
 import com.mcreater.nbtlib.NBTConstraints;
 
-public class FloatTag extends NumberTag<Float> implements Comparable<FloatTag> {
+public class DoubleTag extends NumberTag<Double> implements Comparable<DoubleTag> {
     /**
      * @param value Initializes this tag with some value.If the value equals {@code null}, it will throw a {@link NullPointerException}
      */
-    public FloatTag(float value) {
+    public DoubleTag(double value) {
         super(value);
     }
 
-    public FloatTag() {
-        super(0F);
+    public DoubleTag() {
+        super(0D);
     }
 
     public boolean equals(Object other) {
-        return super.equals(other) && getValue().equals(((FloatTag) other).getValue());
+        return super.equals(other) && getValue().equals(((DoubleTag) other).getValue());
     }
 
     public byte getID() {
-        return NBTConstraints.FLOAT_TAG_ID;
+        return NBTConstraints.DOUBLE_TAG_ID;
     }
 
-    public Tag<Float> clone() {
-        return new FloatTag(getValue());
+    public Tag<Double> clone() {
+        return new DoubleTag(getValue());
     }
 
-    public int compareTo(FloatTag o) {
+    public int compareTo(DoubleTag o) {
         return getValue().compareTo(o.getValue());
     }
 }
