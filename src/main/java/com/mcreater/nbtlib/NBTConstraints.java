@@ -15,6 +15,8 @@ public class NBTConstraints {
     public static final byte DOUBLE_TAG_ID = 6;
     public static final byte BYTE_ARRAY_TAG_ID = 7;
     public static final byte STRING_TAG_ID = 8;
+    public static final byte LIST_TAG_ID = 9;
+    public static final byte COMPOUND_TAG_ID = 10;
     public static final byte LONG_ARRAY_TAG_ID = 12;
     public static final byte INTEGER_ARRAY_TAG_ID = 13;
     public static final Gson GSON =
