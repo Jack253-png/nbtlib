@@ -2,6 +2,8 @@ package com.mcreater.nbtlib.tags;
 
 import java.util.Objects;
 
+import static com.mcreater.nbtlib.NBTConstraints.GSON;
+
 public abstract class Tag<T> implements Cloneable {
     /**
      * The default maximum depth of the NBT structure.
@@ -28,7 +30,16 @@ public abstract class Tag<T> implements Cloneable {
      * @param value the value to be set to this tag.
      */
     public void setValue(T value) {
-        this.value = Objects.requireNonNull(value);
+        this.value = checkValue(value);
+    }
+
+    /**
+     * Check the value to be set.
+     * @param value the value to be checked.
+     * @return the checked value
+     */
+    protected T checkValue(T value) {
+        return Objects.requireNonNull(value);
     }
 
     /**
@@ -61,23 +72,8 @@ public abstract class Tag<T> implements Cloneable {
      * @return The string representation of the value of this Tag.
      */
     public String toString() {
-        return valueToString();
+        return GSON.toJson(this);
     }
-
-    /**
-     * Call method {@link Tag#valueToString(int maxDepth)} with argument {@link Tag#DEFAULT_MAX_DEPTH}.
-     * @return The string representation of the value of this Tag.
-     */
-    protected String valueToString() {
-        return valueToString(DEFAULT_MAX_DEPTH);
-    }
-
-    /**
-     * Returns a JSON representation of the value of this Tag.
-     * @param maxDepth The maximum nesting depth.
-     * @return The string representation of the value of this Tag.
-     */
-    protected abstract String valueToString(int maxDepth);
 
     /**
      * Creates a clone of this Tag.

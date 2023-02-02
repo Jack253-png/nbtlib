@@ -31,8 +31,4 @@ public abstract class NumberTag<T extends Number & Comparable<T>> extends Tag<T>
     public double asDouble() {
         return getValue().doubleValue();
     }
-
-    public String valueToString(int maxDepth) {
-        return getValue().toString();
-    }
 }
