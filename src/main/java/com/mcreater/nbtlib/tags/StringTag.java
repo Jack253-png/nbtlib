@@ -22,7 +22,7 @@ public class StringTag extends Tag<String> implements Comparable<StringTag> {
         return NBTConstraints.STRING_TAG_ID;
     }
 
-    public Tag<String> clone() {
+    public StringTag clone() {
         return new StringTag(getValue());
     }
 

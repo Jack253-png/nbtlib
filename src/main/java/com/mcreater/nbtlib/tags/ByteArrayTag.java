@@ -28,7 +28,7 @@ public class ByteArrayTag extends ArrayTag<byte[]> implements Comparable<ByteArr
         return NBTConstraints.BYTE_ARRAY_TAG_ID;
     }
 
-    public Tag<byte[]> clone() {
+    public ByteArrayTag clone() {
         return new ByteArrayTag(Arrays.copyOf(getValue(), length()));
     }
 

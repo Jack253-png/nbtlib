@@ -22,7 +22,7 @@ public class DoubleTag extends NumberTag<Double> implements Comparable<DoubleTag
         return NBTConstraints.DOUBLE_TAG_ID;
     }
 
-    public Tag<Double> clone() {
+    public DoubleTag clone() {
         return new DoubleTag(getValue());
     }
 

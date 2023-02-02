@@ -21,7 +21,7 @@ public class ShortTag extends NumberTag<Short> implements Comparable<ShortTag> {
         return super.equals(other) && asShort() == ((ShortTag) other).asShort();
     }
 
-    public Tag<Short> clone() {
+    public ShortTag clone() {
         return new ShortTag(getValue());
     }
 

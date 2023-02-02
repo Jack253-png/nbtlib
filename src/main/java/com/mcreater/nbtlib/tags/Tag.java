@@ -1,5 +1,7 @@
 package com.mcreater.nbtlib.tags;
 
+import com.mcreater.nbtlib.NBTConstraints;
+
 import java.util.Objects;
 
 import static com.mcreater.nbtlib.NBTConstraints.GSON;
@@ -72,7 +74,7 @@ public abstract class Tag<T> implements Cloneable {
      * @return The string representation of the value of this Tag.
      */
     public String toString() {
-        return GSON.toJson(this);
+        return GSON.toJson(NBTConstraints.toJavaNativeData(this));
     }
 
     /**

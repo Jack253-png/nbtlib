@@ -28,7 +28,7 @@ public class LongArrayTag extends ArrayTag<long[]> implements Comparable<LongArr
         return NBTConstraints.LONG_ARRAY_TAG_ID;
     }
 
-    public Tag<long[]> clone() {
+    public LongArrayTag clone() {
         return new LongArrayTag(Arrays.copyOf(getValue(), length()));
     }
 

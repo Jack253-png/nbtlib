@@ -22,7 +22,7 @@ public class LongTag extends NumberTag<Long> implements Comparable<LongTag> {
         return NBTConstraints.LONG_TAG_ID;
     }
 
-    public Tag<Long> clone() {
+    public LongTag clone() {
         return new LongTag(getValue());
     }
 

@@ -309,7 +309,7 @@ public class ListTag<T extends Tag<?>> extends Tag<List<T>> implements Iterable<
     }
 
     @SuppressWarnings("unchecked")
-    private void addUnchecked(Tag<?> tag) {
+    public void addUnchecked(Tag<?> tag) {
         if (getTypeClass() != EndTag.class && typeClass != tag.getClass()) {
             throw new IllegalArgumentException(String.format(
                     "cannot add %s to ListTag<%s>",

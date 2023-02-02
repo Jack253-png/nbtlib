@@ -22,7 +22,7 @@ public class FloatTag extends NumberTag<Float> implements Comparable<FloatTag> {
         return NBTConstraints.FLOAT_TAG_ID;
     }
 
-    public Tag<Float> clone() {
+    public FloatTag clone() {
         return new FloatTag(getValue());
     }
 

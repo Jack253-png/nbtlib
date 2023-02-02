@@ -16,7 +16,7 @@ public class EndTag extends Tag<Void> {
         return NBTConstraints.END_TAG_ID;
     }
 
-    public Tag<Void> clone() {
+    public EndTag clone() {
         return INSTANCE;
     }
 }

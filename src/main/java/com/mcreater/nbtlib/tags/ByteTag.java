@@ -34,7 +34,7 @@ public class ByteTag extends NumberTag<Byte> implements Comparable<ByteTag> {
         return getValue().compareTo(other.getValue());
     }
 
-    public Tag<Byte> clone() {
+    public ByteTag clone() {
         return new ByteTag(getValue());
     }
 }

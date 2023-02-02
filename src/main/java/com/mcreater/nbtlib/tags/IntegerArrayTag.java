@@ -28,7 +28,7 @@ public class IntegerArrayTag extends ArrayTag<int[]> implements Comparable<Integ
         return NBTConstraints.INTEGER_ARRAY_TAG_ID;
     }
 
-    public Tag<int[]> clone() {
+    public IntegerArrayTag clone() {
         return new IntegerArrayTag(Arrays.copyOf(getValue(), length()));
     }
 

@@ -262,7 +262,7 @@ public class CompoundTag extends Tag<Map<String, Tag<?>>>
         return entrySet().iterator();
     }
 
-    public Tag<Map<String, Tag<?>>> clone() {
+    public CompoundTag clone() {
         CompoundTag tag = new CompoundTag((int) Math.ceil(getValue().size() / 0.75f));
         getValue().forEach(tag::put);
         return tag;
