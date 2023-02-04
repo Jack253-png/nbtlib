@@ -1,6 +1,5 @@
 package com.mcreater.nbtlib.nbt.io;
 
-import com.mcreater.nbtlib.NBTConstraints;
 import com.mcreater.nbtlib.io.ExceptionBiFunction;
 import com.mcreater.nbtlib.io.MaxDepthIO;
 import com.mcreater.nbtlib.tags.ByteArrayTag;
@@ -131,19 +130,22 @@ public class NBTInputStream extends DataInputStream implements NBTInput, MaxDept
         byte listTagType = stream.readByte();
         ListTag<?> listTag = ListTag.createUnchecked(idClassMapping.get(listTagType));
         int length = stream.readInt();
-        if (length < 0) length = 0;
-        for (int index = 0; index < length; index++) {
-            listTag.addUnchecked(stream.readTag(listTagType, MaxDepthIO.checkDepth(depth)));
+        if (length < 0) return listTag;
+        while (length > 0) {
+            listTag.addUnchecked(stream.readTag(listTagType, depth));
+            length--;
         }
         return listTag;
     }
 
     private static CompoundTag readCompoundTag(NBTInputStream stream, int maxDepth) throws IOException {
         CompoundTag comp = new CompoundTag();
-        for (int id = stream.readByte() & 0xFF; id != 0; id = stream.readByte() & 0xFF) {
+        int id = stream.readByte() & 0xFF;
+        while (id != 0) {
             String key = stream.readUTF();
-            Tag<?> element = stream.readTag((byte) id, MaxDepthIO.checkDepth(maxDepth));
+            Tag<?> element = stream.readTag((byte) id, stream.checkDepth(maxDepth));
             comp.put(key, element);
+            id = stream.readByte() & 0xFF;
         }
         return comp;
     }

@@ -82,4 +82,7 @@ public abstract class Tag<T> implements Cloneable {
      * @return A clone of this Tag.
      * */
     public abstract Tag<T> clone();
+    public <T extends Tag<?>> T asTag(Class<T> clazz) {
+        return (T) this;
+    }
 }

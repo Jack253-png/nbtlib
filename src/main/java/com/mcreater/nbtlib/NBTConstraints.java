@@ -2,21 +2,15 @@ package com.mcreater.nbtlib;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mcreater.nbtlib.io.ExceptionConsumer;
 import com.mcreater.nbtlib.tags.CompoundTag;
 import com.mcreater.nbtlib.tags.ListTag;
 import com.mcreater.nbtlib.tags.Tag;
 
-import java.io.IOException;
 import java.util.AbstractMap;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.FutureTask;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import java.util.function.BiConsumer;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class NBTConstraints {
@@ -55,14 +49,14 @@ public class NBTConstraints {
                 return tag.getValue();
             case COMPOUND_TAG_ID:
                 CompoundTag tag1 = (CompoundTag) tag;
-                Map<String, Object> result = new HashMap<>();
-                tag1.entrySet().stream()
+                return tag1.entrySet().stream()
                         .filter(NBTConstraints::checkNotEndTag)
                         .map(NBTConstraints::toNativeEntry)
-                        .forEach(entry -> result.put(entry.getKey(), entry.getValue()));
-                return result;
+                        .collect(HashMap::new,
+                                NBTConstraints::putEntry,
+                                Map::putAll);
             case LIST_TAG_ID:
-                ListTag<Tag<?>> tag2 = (ListTag<Tag<?>>) tag;
+                ListTag<? extends Tag<?>> tag2 = (ListTag<? extends Tag<?>>) tag;
                 return tag2.getValue().stream()
                         .filter(NBTConstraints::checkNotEndTag)
                         .map(NBTConstraints::toJavaNativeData)
@@ -75,6 +69,9 @@ public class NBTConstraints {
     }
     private static boolean checkNotEndTag(Map.Entry<String, Tag<?>> entry) {
         return entry.getValue().getID() != END_TAG_ID;
+    }
+    private static <K, V> void putEntry(Map<K, V> map, Map.Entry<? extends K, ? extends V> entry) {
+        map.put(entry.getKey(), entry.getValue());
     }
     private static Map.Entry<String, Object> toNativeEntry(Map.Entry<String, Tag<?>> entry) {
         return new AbstractMap.SimpleImmutableEntry<>(entry.getKey(), toJavaNativeData(entry.getValue()));

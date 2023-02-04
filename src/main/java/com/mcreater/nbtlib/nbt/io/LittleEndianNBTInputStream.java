@@ -142,7 +142,7 @@ public class LittleEndianNBTInputStream implements DataInput, NBTInput, MaxDepth
         int length = stream.readInt();
         if (length < 0) length = 0;
         for (int index = 0; index < length; index++) {
-            listTag.addUnchecked(stream.readTag(listTagType, MaxDepthIO.checkDepth(depth)));
+            listTag.addUnchecked(stream.readTag(listTagType, stream.checkDepth(depth)));
         }
         return listTag;
     }
@@ -151,7 +151,7 @@ public class LittleEndianNBTInputStream implements DataInput, NBTInput, MaxDepth
         CompoundTag comp = new CompoundTag();
         for (int id = stream.readByte() & 0xFF; id != 0; id = stream.readByte() & 0xFF) {
             String key = stream.readUTF();
-            Tag<?> element = stream.readTag((byte) id, MaxDepthIO.checkDepth(maxDepth));
+            Tag<?> element = stream.readTag((byte) id, stream.checkDepth(maxDepth));
             comp.put(key, element);
         }
         return comp;
