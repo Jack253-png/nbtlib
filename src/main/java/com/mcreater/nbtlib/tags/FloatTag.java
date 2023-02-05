@@ -1,6 +1,6 @@
 package com.mcreater.nbtlib.tags;
 
-import com.mcreater.nbtlib.NBTConstraints;
+import com.mcreater.nbtlib.nbt.NBTConstraints;
 
 public class FloatTag extends NumberTag<Float> implements Comparable<FloatTag> {
     /**

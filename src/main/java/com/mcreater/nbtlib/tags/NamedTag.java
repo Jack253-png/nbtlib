@@ -3,8 +3,8 @@ package com.mcreater.nbtlib.tags;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.mcreater.nbtlib.NBTConstraints.GSON;
-import static com.mcreater.nbtlib.NBTConstraints.toJavaNativeData;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.GSON;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.toJavaNativeData;
 
 public class NamedTag {
 

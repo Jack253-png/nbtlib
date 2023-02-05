@@ -1,6 +1,6 @@
 package com.mcreater.nbtlib.tags;
 
-import com.mcreater.nbtlib.NBTConstraints;
+import com.mcreater.nbtlib.nbt.NBTConstraints;
 
 public class EndTag extends Tag<Void> {
     public static final EndTag INSTANCE = new EndTag();

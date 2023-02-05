@@ -1,10 +1,10 @@
 package com.mcreater.nbtlib.tags;
 
-import com.mcreater.nbtlib.NBTConstraints;
+import com.mcreater.nbtlib.nbt.NBTConstraints;
 
 import java.util.Objects;
 
-import static com.mcreater.nbtlib.NBTConstraints.GSON;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.GSON;
 
 public abstract class Tag<T> implements Cloneable {
     /**

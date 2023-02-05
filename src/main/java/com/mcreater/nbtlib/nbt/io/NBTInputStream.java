@@ -24,19 +24,19 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.mcreater.nbtlib.NBTConstraints.BYTE_ARRAY_TAG_ID;
-import static com.mcreater.nbtlib.NBTConstraints.BYTE_TAG_ID;
-import static com.mcreater.nbtlib.NBTConstraints.COMPOUND_TAG_ID;
-import static com.mcreater.nbtlib.NBTConstraints.DOUBLE_TAG_ID;
-import static com.mcreater.nbtlib.NBTConstraints.END_TAG_ID;
-import static com.mcreater.nbtlib.NBTConstraints.FLOAT_TAG_ID;
-import static com.mcreater.nbtlib.NBTConstraints.INTEGER_ARRAY_TAG_ID;
-import static com.mcreater.nbtlib.NBTConstraints.INTEGER_TAG_ID;
-import static com.mcreater.nbtlib.NBTConstraints.LIST_TAG_ID;
-import static com.mcreater.nbtlib.NBTConstraints.LONG_ARRAY_TAG_ID;
-import static com.mcreater.nbtlib.NBTConstraints.LONG_TAG_ID;
-import static com.mcreater.nbtlib.NBTConstraints.SHORT_TAG_ID;
-import static com.mcreater.nbtlib.NBTConstraints.STRING_TAG_ID;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.BYTE_ARRAY_TAG_ID;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.BYTE_TAG_ID;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.COMPOUND_TAG_ID;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.DOUBLE_TAG_ID;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.END_TAG_ID;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.FLOAT_TAG_ID;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.INTEGER_ARRAY_TAG_ID;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.INTEGER_TAG_ID;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.LIST_TAG_ID;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.LONG_ARRAY_TAG_ID;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.LONG_TAG_ID;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.SHORT_TAG_ID;
+import static com.mcreater.nbtlib.nbt.NBTConstraints.STRING_TAG_ID;
 
 public class NBTInputStream extends DataInputStream implements NBTInput, MaxDepthIO {
     private static final Map<Byte, ExceptionBiFunction<NBTInputStream, Integer, ? extends Tag<?>, IOException>> readers = new HashMap<>();

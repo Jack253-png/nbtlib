@@ -1,6 +1,6 @@
 package com.mcreater.nbtlib.nbt.io;
 
-import com.mcreater.nbtlib.NBTConstraints;
+import com.mcreater.nbtlib.nbt.NBTConstraints;
 import com.mcreater.nbtlib.io.ExceptionTriConsumer;
 import com.mcreater.nbtlib.io.MaxDepthIO;
 import com.mcreater.nbtlib.tags.ByteArrayTag;
